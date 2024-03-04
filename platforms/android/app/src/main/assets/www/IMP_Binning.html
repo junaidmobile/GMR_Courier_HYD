@@ -1,0 +1,385 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/jquery-1.12.0.min.js"></script>
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+    <script src="scripts/jquery-ui.js"></script>
+    <link rel="stylesheet" href="css/jquery-ui.css">
+
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/sticky-footer.css" rel="stylesheet" />
+    <script src="scripts/LoadingModel.js"></script>
+    <script src="scripts/LoaderShow-Hide.js"></script>
+
+    <script src="scripts/dialog.js"></script>
+    <script src="js/General.js"></script>
+    <link href="css/General.css" rel="stylesheet" />
+    <script src="scripts/alert.mob.js"></script>
+    <link href="css/Loader.css" rel="stylesheet" />
+    <link href="css/dialog.css" rel="stylesheet" />
+    <link href="css/alert.mob.css" rel="stylesheet" />
+    <script src="js/Import/IMP_Binning.js"></script>
+    <style>
+
+        #TextBoxDiv td.foo:nth-child(7n+1) {
+            background-color: rgb(177,112,136);
+            color: white;
+            padding: 3px;
+            text-align: center;
+        }
+
+        #TextBoxDiv td.foo:nth-child(7n+2) {
+            background-color: rgb(27,81,141);
+            color: white;
+            padding: 3px;
+            text-align: center;
+        }
+
+        #TextBoxDiv td.foo:nth-child(7n+3) {
+            background-color: rgb(13,150,68);
+            color: white;
+            padding: 3px;
+            text-align: center;
+        }
+
+        #TextBoxDiv td.foo:nth-child(7n+4) {
+            background-color: rgb(35,29,31);
+            color: white;
+            padding: 3px;
+            text-align: center;
+        }
+
+        #TextBoxDiv td.foo:nth-child(7n+5) {
+            background-color: rgb(157,124,43);
+            color: white;
+            padding: 3px;
+            text-align: center;
+        }
+
+        #TextBoxDiv td.foo:nth-child(7n+6) {
+            background-color: rgb(14,76,166);
+            color: white;
+            padding: 3px;
+            text-align: center;
+        }
+
+        #TextBoxDiv td.foo:nth-child(7n+7) {
+            background-color: rgb(206,84,209);
+            color: white;
+            padding: 3px;
+            text-align: center;
+        }
+
+        #TextBoxDiv td.foo:nth-child(7n+8) {
+            background-color: rgb(143,74,219);
+            color: white;
+            padding: 3px;
+            text-align: center;
+        }
+
+        #TextBoxDiv td.foo:nth-child(7n+9) {
+            background-color: rgb(198,139,74);
+            color: white;
+            padding: 3px;
+            text-align: center;
+        }
+
+        #TextBoxDiv > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+            font-size: 12px;
+        }
+
+        #TextBoxDiv {
+            margin-bottom: 0px !important;
+            margin-top: 5px;
+        }
+
+        .blink_me {
+            animation: blinker 1s linear infinite;
+            background-color: yellow;
+            padding: 15px;
+            text-align: center;
+            line-height: 50px;
+            font-weight: bolder;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+            vertical-align: inherit;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header" style="background-color:#065da1;">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" id="btnnavbar" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" id="navhdrName" style="text-align:right;padding-left: 50px;"></a>
+                <img class="navbarImage" src="images/Logo.png" onclick="ShowHomePage();">
+                <a href="#" id="navhdr" class="loggedinUser"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid" style="margin-top:63px;">
+        <div class="panel-body">
+            <div class="panel panel-widget forms-panel form-grids widget-shadow">
+                <div class="forms">
+                    <div class="form-body">
+                        <form>
+                            <div class="row form-group">
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding" style="display:none">
+                                    <input type="radio" name="radSize" id="rdoIntlMovement" value="IntlMovement" checked="checked" />
+                                    <label for="sizeLarge">Intl. Movement</label>
+                                    <input type="radio" name="radSize" id="rdoForwarding" value="Forwarding" />
+                                    <label for="sizeSmall">Forwarding/Backwarding</label>
+                                </div>
+                            </div>
+
+                            <div class="row form-group" id="divInternalMvmt">
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                    <div class="col-xs-6 col-form-label">
+                                        <label id="lblAWBNo" for="">Group Id.</label>
+                                        <font color="red">*</font>
+                                    </div>
+                                    <div class="col-xs-6 NoPadding">
+                                        <input id="txtGroupId" class="form-control" type="number"
+                                               onkeyup="ChkMaxLength(this, '14'); grplength();" onblur="    GetHAWBDetailsForMAWB()"
+                                               autofocus onchange="CheckEmpty();">
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                    <div class="col-xs-6 col-form-label">
+                                        <label id="lblAWBNo" for="">Location</label>
+                                        <font color="red">*</font>
+                                    </div>
+                                    <div class="col-xs-3 NoPadding">
+                                        <input id="txtLocation" class="form-control" type="text" maxlength="15">
+                                    </div>
+                                    <div class="col-xs-3 NoPadding">
+                                        <input id="txtLocationShow" class="form-control" type="text" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                    <div class="col-xs-6 col-form-label">
+                                        <label id="lblAWBNo" for="">NOG.</label>
+                                        <!--<font color="red">*</font>-->
+                                    </div>
+                                    <div class="col-xs-6 NoPadding">
+                                        <input id="txtNOG" class="form-control" type="text" disabled>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                    <!--<div class="col-xs-3 col-form-label">
+                                        <label id="lblSHCCode" for="lblSHCCode" class="control-label labelFont">
+                                            SHC Code
+                                        </label>
+                                    </div>-->
+                                    <!--<div class="col-xs-1  ButtonColor" style="display: flex; justify-content: center; align-items: center;">
+                                        <span style="font-size: 20px;" class="glyphicon glyphicon-pencil "></span>
+                                    </div>-->
+
+                                    <div class="col-xs-12 NoPadding">
+                                        <table class="table" id="TextBoxDiv">
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding" style="display:none;">
+                                    <div class="col-xs-6 col-form-label">
+                                        <label id="lblAWBNo" for="">Remarks</label>
+                                        <!--<font color="red">*</font>-->
+                                    </div>
+                                    <div class="col-xs-6 NoPadding">
+                                        <input id="txtRemark" class="form-control" type="text" disabled>
+                                    </div>
+
+                                </div>
+
+
+
+                                <!--<div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                        <div class="col-xs-6 col-form-label">
+                                            <label id="lblHAWB" for="txtHAWB">HAWB No</label>
+                                        </div>
+                                        <div class="col-xs-6 NoPadding">
+                                            <select class="form-control" id="ddlHAWB" onchange="ClearIGM()">
+                                                <option value="0">Select</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="form-group col-xs-4 col-sm-4 col-md-4 col-xs-offset-6 col-sm-offset-4  col-md-offset-4 NoPadding">
+                                            <input type="button" id="btnGetIGMDetail" class="form-control ButtonColor" value="Get IGM" onclick="GetIGMDetails()">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                        <div class="col-xs-6 col-form-label">
+                                            <label id="lblIGM" for="ddlIGM">IGM No</label>
+                                        </div>
+                                        <div class="col-xs-6 NoPadding">
+                                            <select class="form-control" id="ddlIGM">
+                                                <option value="0">Select</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group" id="divForwarding" style="display:none">
+                                    <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                        <div class="col-xs-6 col-form-label">
+                                            <label id="lblBCNo" for="txtBCNo">BC No</label>
+                                            <font color="red">*</font>
+                                        </div>
+                                        <div class="col-xs-6 NoPadding">
+                                            <input id="txtBCNo" class="form-control" type="text" maxlength="20">
+                                        </div>
+                                    </div>-->
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="form-group col-xs-6 col-sm-6 col-md-6 col-xs-offset-6 col-sm-offset-6  col-md-offset-6 NoPadding">
+                                    <input disabled type="button" id="btnMoveDetail" class="form-control ButtonColor" value="Move" onclick="GetMovementDetails()">
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <span id="spnErrormsg"></span>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="divVCTDetail">
+
+                <!--<table id="tblNewsForGatePass" border="1" style="width:100%;table-layout:fixed;word-break:break-word;border-color: white;margin-top: 2%;">
+                <thead>
+                <tr>
+                <th height="30" width="100" style="background-color:rgb(208, 225, 244);padding: 3px 3px 3px 0px;font-size:14px" align="center" font-weight:'bold'="">MAWB</th>
+                <th height="30" style="background-color:rgb(208, 225, 244);padding: 3px 3px 3px 0px;font-size:14px" align="center" font-weight:'bold'="">HAWB</th>
+                <th height="30" style="background-color:rgb(208, 225, 244);padding: 3px 3px 3px 0px;font-size:14px" align="center" font-weight:'bold'="">Remark</th>
+                <th height="30" width="50" style="background-color:rgb(208, 225, 244);padding: 3px 3px 3px 0px;font-size:14px" align="center" font-weight:'bold'="">NoP</th>
+                </tr>
+                </thead>
+                <tbody>
+                                        <tr>
+                                            <td style="background: rgb(224, 243, 215);padding-left: 4px;font-size:14px;text-align:left;padding-right: 4px;white-space: nowrap;">125-12345678</td>
+                                            <td style="background: rgb(224, 243, 215);padding-left: 4px;font-size:14px;text-align:left;padding-right: 4px;">HAWB1</td>
+                                            <td style="background: rgb(224, 243, 215);padding-left: 4px;font-size:14px;text-align:left;padding-right: 4px;">xxxxxx</td>
+                                            <td style="background: rgb(224, 243, 215);padding-left: 4px;font-size:14px;text-align:right;padding-right: 4px;">5</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="background: rgb(224, 243, 215);padding-left: 4px;font-size:14px;text-align:left;padding-right: 4px;white-space: nowrap;">125-12345678</td>
+                                            <td style="background: rgb(224, 243, 215);padding-left: 4px;font-size:14px;text-align:left;padding-right: 4px;">HAWB2</td>
+                                            <td style="background: rgb(224, 243, 215);padding-left: 4px;font-size:14px;text-align:left;padding-right: 4px;">xxxxxx</td>
+                                            <td style="background: rgb(224, 243, 215);padding-left: 4px;font-size:14px;text-align:right;padding-right: 4px;">8</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="background: rgb(224, 243, 215);padding-left: 4px;font-size:14px;text-align:left;padding-right: 4px;white-space: nowrap;">125-12345678</td>
+                                            <td style="background: rgb(224, 243, 215);padding-left: 4px;font-size:14px;text-align:left;padding-right: 4px;">HAWB3</td>
+                                            <td style="background: rgb(224, 243, 215);padding-left: 4px;font-size:14px;text-align:left;padding-right: 4px;">xxxxxx</td>
+                                            <td style="background: rgb(224, 243, 215);padding-left: 4px;font-size:14px;text-align:right;padding-right: 4px;">15</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>-->
+
+            </div>
+
+            <div class="form-group col-xs-6 col-sm-6 col-md-6" style="margin-top:15px">
+                <input type="button" id="btnExcLanded" class="form-control ButtonColor" value="Exit" onclick="window.location.href = 'IMP_Dashboard.html'">
+            </div>
+            <div class="form-group col-xs-6 col-sm-6 col-md-6" style="margin-top:15px">
+                <input type="button" id="btnClear" class="form-control ButtonColor" value="Clear" onclick="clearALL()">
+            </div>
+
+            <!--<div class="panel panel-widget forms-panel form-grids widget-shadow" style="margin-top:5%">
+                <div class="forms">
+                    <div class="form-body">
+                        <form>
+                            <div class="row">
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                    <div class="col-xs-6 col-form-label">
+                                        <label for="txtFromLocation">Origin/Dest.</label>
+                                    </div>
+                                    <div class="col-xs-3 NoPadding">
+                                        <input id="txtOrigin" class="form-control" type="text" maxlength="20" disabled>
+                                    </div>
+                                    <div class="col-xs-3 NoPadding">
+                                        <input id="txtDestination" class="form-control" type="text" maxlength="20" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                    <div class="col-xs-6 col-form-label">
+                                        <label for="ddlCommodity">Commodity</label>
+                                    </div>
+                                    <div class="col-xs-6 NoPadding">
+                                        <input id="txtCommodity" class="form-control" type="text" maxlength="20" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                    <div class="col-xs-6 col-form-label">
+                                        <label for="txtTotalPkg">Binned/Total Pkgs</label>
+                                    </div>
+                                    <div class="col-xs-6 NoPadding">
+                                        <input id="txtTotalPkg" class="form-control" type="text" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="divAddLocation">
+
+                            </div>
+                            <div class="row form-group" style="margin-top:5px;">
+                                <div class="form-group col-xs-4 col-sm-4 col-md-4 NoPadding">
+                                    <input type="button" id="btnSubmit" class="form-control ButtonColor" value="Submit" onclick="SaveForwardDetails()">
+                                </div>
+                                <div class="form-group col-xs-4 col-sm-4 col-md-4">
+                                    <input type="button" id="btnClear" class="form-control ButtonColor" value="Clear" onclick="clearALL()">
+                                </div>
+                                <div class="form-group col-xs-4 col-sm-4 col-md-4">
+                                    <input type="button" id="btnExit" class="form-control ButtonColor" value="Exit" onclick="window.location.href = 'IMP_Dashboard.html'">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>-->
+
+            <div id="divAddTestLocation">
+
+            </div>
+        </div>
+    </div>
+    <div>
+        <footer class="footer" style="color: white; font-size :12px; background-color:#0967b0;">
+            <div class="container">
+                <center><p class="text-muted" id="RightsReserved"></p></center>
+            </div>
+        </footer>
+    </div>
+</body>
+<script language="javascript" type="text/javascript">
+    $('#RightsReserved').text(' \xA9 Kale Logistics Solutions Private Limited. ' + (new Date).getFullYear().toString());
+</script>
+</html>

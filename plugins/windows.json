@@ -1,0 +1,36 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "GMR HYD INT"
+    },
+    "cordova-plugin-compat": {
+      "PACKAGE_NAME": "GMR HYD INT"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "GMR HYD INT"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "GMR HYD INT"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "GMR HYD INT"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "GMR HYD INT"
+    },
+    "cordova-plugin-datecs-printer": {
+      "PACKAGE_NAME": "MABB"
+    },
+    "cordova-plugin-zebra-printer": {
+      "PACKAGE_NAME": "MABB"
+    }
+  },
+  "dependent_plugins": {}
+}

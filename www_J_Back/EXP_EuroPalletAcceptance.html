@@ -1,0 +1,399 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/jquery-1.12.0.min.js"></script>
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/sticky-footer.css" rel="stylesheet" />
+    <script src="scripts/LoadingModel.js"></script>
+    <script src="scripts/LoaderShow-Hide.js"></script>
+    <script src="scripts/dialog.js"></script>
+    <script src="js/General.js"></script>
+    <link href="css/General.css" rel="stylesheet" />
+    <script src="scripts/alert.mob.js"></script>
+    <link href="css/Loader.css" rel="stylesheet" />
+    <link href="css/dialog.css" rel="stylesheet" />
+    <link href="css/alert.mob.css" rel="stylesheet" />
+    <script src="js/Export/EuroPalletAcceptance.js"></script>
+    <script src="js/Export/Exp_EuroPalletAcceptance.js"></script>
+    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/wow/0.1.12/wow.min.js"></script>-->
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+    <!--<script>new WOW().init();</script>-->
+
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header" style="background-color:#065da1;">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" id="btnnavbar"
+                        data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" id="navhdrName" style="text-align:right;padding-left: 50px;">TDG Acceptance</a>
+                <img class="navbarImage" src="images/Logo.png" onclick="ShowHomePage();">
+                <a href="#" id="navhdr" class="loggedinUser"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid" style="margin-top:63px;">
+        <div class="panel-body">
+            <div class="panel panel-widget forms-panel form-grids widget-shadow">
+                <div class="forms">
+                    <div class="form-body">
+                        <form>
+                            <div class="row">
+                                <!--<div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                    <div class="col-xs-6 col-form-label">
+                                        <label for="txtVCTScan">VCT Scan</label>
+                                         <font color="red">*</font>
+                                    </div>
+                                    <div class="col-xs-6 NoPadding">
+                                        <input id="txtVCTScan" class="form-control" type="text"
+                                            style="text-align:right;" onkeyup="ChkMaxLength(this, '15');"
+                                            onblur="GetVCTDetailsForTDGAcceptanceForScan();">
+                                    </div>
+                                </div>-->
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                    <div class="col-xs-6 col-form-label">
+                                        <label for="txtVCTNo">VCT No</label>
+                                        <font color="red">*</font>
+                                    </div>
+                                    <div class="col-xs-6 NoPadding">
+                                        <input id="txtVCTNo" class="form-control" type="text"
+                                               style="text-align:right;" onkeyup="ChkMaxLength(this, '15'); onKeyPressVTNo();"
+                                               onblur="GetVCTDetailsForTDGAcceptance('true','true');">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                    <div class="col-xs-6 col-form-label">
+                                        <label id="lblDoor" for="ddDoor" class="control-label labelFont">Door</label>
+                                        <font color="red">*</font>
+                                    </div>
+                                    <div class="col-xs-6 NoPadding">
+                                        <!--<select class="form-control" id="ddDoor"
+                                            onchange="GetAWBDetailsForULD($('#ddDoor').val())">
+                                            <option value="0">Select</option>
+                                        </select>-->
+                                        <input type="text" id="txtDoor"
+                                               class="form-control" onkeyup="ChkMaxLength(this, '7');">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <!--<div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                    <label for="errorMsg"></label>
+                                    <div class="col-xs-6 NoPadding">
+                                        <input id="txtPend" class="form-control" type="number" style="text-align:right;"
+                                            onkeyup="ChkMaxLength(this, '12');"
+                                            onblur="GetULDDetailsforVCT(); GetAWBDetailsforVCT();">
+                                    </div>
+                                </div>-->
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                    <div class="col-xs-6 col-form-label">
+                                        <label id="" style="color:red"></label>
+                                    </div>
+                                    <!--<div class="col-xs-3 col-form-label">
+                                        <label class="checkbox-inline"><input type="checkbox"
+                                                id="chkSealed">Sealed</label>
+                                    </div>-->
+                                    <div class="col-xs-6 NoPadding">
+                                        <input type="button" onclick="UpdateVCTStatus('I');" id="btnDockIn" class="form-control ButtonColor"
+                                               value="DOCK In" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 NoPadding">
+
+                                    <span id="spnErrormsg"></span>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                    <div class="col-xs-6 col-form-label">
+                                        <label id="lblTotalPieces" for="txtTotalPieces"
+                                               class="control-label labelFont">Total Pieces</label>
+                                        <!-- <font color="red">*</font> -->
+                                    </div>
+                                    <div class="col-xs-6 NoPadding">
+                                        <input type="number" style="text-align:right;" id="txtTotalPieces"
+                                               class="form-control" onkeyup="ChkMaxLength(this, '7');" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                    <div class="col-xs-6 col-form-label">
+                                        <label for="txtGrossWt">Total Gr Wt.</label>
+                                        <!-- <font color="red">*</font> -->
+                                    </div>
+                                    <div class="col-xs-6 NoPadding">
+                                        <input id="txtGrossWt" class="form-control" type="number"
+                                               style="text-align:right;" onkeyup="ChkMaxLength(this, '9');" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                    <div class="col-xs-6 col-form-label">
+                                        <label id="lblAcceptedPieces" for="txtAcceptedPieces"
+                                               class="control-label labelFont">Accepted Pieces</label>
+                                        <!-- <font color="red">*</font> -->
+                                    </div>
+                                    <div class="col-xs-6 NoPadding">
+                                        <input type="number" id="txtAcceptedPieces" style="text-align:right;" class="form-control" maxlength="15" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                    <div class="col-xs-6 col-form-label">
+                                        <label for="txtRemainingPieces">Remaining Pieces</label>
+                                        <!-- <font color="red">*</font> -->
+                                    </div>
+                                    <div class="col-xs-6 NoPadding">
+                                        <input id="txtRemainingPieces" class="form-control" type="number"
+                                               style="text-align:right;" onkeyup="ChkMaxLength(this, '9');" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                    <div class="col-xs-6 col-form-label">
+                                        <label id="lblAWBCount" for="txtAWBCount" class="control-label labelFont">
+                                            AWB
+                                            Count
+                                        </label>
+                                        <!-- <font color="red">*</font> -->
+                                    </div>
+                                    <div class="col-xs-6 NoPadding">
+                                        <input type="number" style="text-align:right;" id="txtAWBCount" class="form-control" maxlength="15" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="row">
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                    <div class="col-xs-6 col-form-label">
+                                        <label class="checkbox-inline"><input type="checkbox"
+                                                id="chkReceive">Receive</label>
+                                    </div>
+                                    <div class="col-xs-6 col-form-label">
+                                        <label class="checkbox-inline"><input type="checkbox" id="chkRFM"
+                                                checked>RFM</label>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="row form-group" style="margin-top:10px;">
+                                <div class="form-group col-xs-6 col-sm-4 col-md-4">
+                                    <input type="button" id="btnClear" class="form-control ButtonColor"
+                                           value="Clear" onclick="clearALL();">
+                                </div>
+                                <div class="form-group col-xs-6 col-sm-4 col-md-4">
+                                    <input type="button" id="btnNext" class="form-control ButtonColor" value="Next"
+                                           onclick="goToTDGAcceptanceAWB();" disabled>
+                                </div>
+                            </div>
+
+                            <div class="row form-group" style="margin-top:10px;">
+                                <!-- <div class="form-group col-xs-6 col-sm-4 col-md-4">
+                                        <input type="button" id="btnExcLanded" class="form-control ButtonColor" value="Un-Scanned"
+                                            onclick="window.location.href = 'EXP_Dashboard.html'">
+                                    </div> -->
+
+                                <div class="form-group col-xs-6 col-sm-4 col-md-4">
+                                    <input type="button" id="btnUnScanned" class="form-control ButtonColor"
+                                           value="Un-Scanned" onclick="GetVCTUnScanDetail();">
+                                </div>
+
+                                <div class="form-group col-xs-6 col-sm-4 col-md-4">
+                                    <input type="button" id="btnDockOut" class="form-control ButtonColor"
+                                           value="Dock Out" onclick="UpdateVCTStatus('O');" disabled>
+                                </div>
+                            </div>
+
+
+                            <div class="row form-group" style="margin-top:10px;">
+                               
+                                <div class="form-group col-xs-6 col-sm-4 col-md-4">
+                                    <input type="button" id="btnExit" class="form-control ButtonColor"
+                                           value="Exit" onclick="window.location.href = 'EXP_Dashboard.html'">
+                                </div>
+                            </div>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModalUnScan" role="dialog" data-backdrop="static">
+                                <div class="modal-dialog">
+
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="background-color:#065da1;">
+                                            <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                                            <h5 style="text-align:right;color:rgb(224, 243, 215);">TDG Pending Shipment</h5>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <div class="row">
+                                                <!--<div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                                        <div class="col-xs-6 col-form-label">
+                                                            <label for="txtVCTScan">Scan Barcode</label>
+
+                                                        </div>
+                                                        <div class="col-xs-6">
+                                                            <input id="txtVCTScan" class="form-control" type="number"
+                                                                   style="text-align:right;"
+                                                                   onkeyup="ChkMaxLength(this, '12');"
+                                                                   onblur="GetULDDetailsforVCT(); GetAWBDetailsforVCT();">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                                        <div class="col-xs-6 col-form-label">
+                                                            <label for="txtVCTNoPop">VCT No.</label>
+                                                            <font color="red">*</font>
+                                                        </div>
+                                                        <div class="col-xs-6">
+                                                            <input id="txtVCTNoPop" class="form-control" type="text"
+                                                                   style="text-align:right;"
+                                                                   onkeyup="ChkMaxLength(this, '15');"
+                                                                   onblur="GetULDDetailsforVCT(); GetAWBDetailsforVCT();">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                                        <div class="col-xs-6 col-form-label">
+                                                            <label id="lblDoor" for="ddDoor" class="control-label labelFont">Door</label>
+                                                            <font color="red">*</font>
+                                                        </div>
+                                                        <div class="col-xs-6">
+                                                            <select class="form-control" id="ddDoor"
+                                                                    onchange="GetAWBDetailsForULD($('#ddDoor').val())">
+                                                                <option value="0">Select</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                                        <div class="col-xs-6 col-form-label">
+                                                            <label style="color:red">Dock In</label>
+                                                        </div>
+                                                        <div class="col-xs-3 col-form-label">
+                                                            <label class="checkbox-inline">
+                                                                <input type="checkbox"
+                                                                       id="chkSealed">Sealed
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-xs-3">
+                                                            <input type="button" id="btnExcLanded" class="form-control ButtonColor"
+                                                                   value="DOCK In">
+                                                        </div>
+                                                    </div>
+
+                                                </div>-->
+
+                                                <div id="divAddLocation">
+
+                                                    <!--<table id="tblNewsForGatePass" style="width:100%;table-layout:fixed;word-break:break-word;border-color: white;margin-top: 2%;">
+                                                        <thead>
+                                                            <tr>
+                                                                <th height="30" style="background-color:rgb(208, 225, 244);padding: 3px 3px 3px 0px;font-size:14px" align="center" font-weight:'bold'="">MAWB No.</th>
+                                                                <th height="30" style="background-color:rgb(208, 225, 244);padding: 3px 3px 3px 0px;font-size:14px" align="center" font-weight:'bold'="">SB No.</th>
+                                                                <th height="30" style="background-color:rgb(208, 225, 244);padding: 3px 3px 3px 0px;font-size:14px" align="center" font-weight:'bold'="">HAWB No.</th>
+                                                                <th height="30" style="background-color:rgb(208, 225, 244);padding: 3px 3px 3px 0px;font-size:14px" align="center" font-weight:'bold'="">Pieces</th>
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="background: rgb(224, 243, 215);padding-left: 4px;font-size:14px;vertical-align: top;" align="left" id="tdGatepass">12511000030</td>
+                                                                <td style="background: rgb(224, 243, 215);padding-left: 4px;font-size:14px;" align="left"></td>
+                                                                <td style="background: rgb(224, 243, 215);padding-left: 4px;font-size:14px;" align="left"></td>
+                                                                <td style="background: rgb(224, 243, 215);padding-left: 4px;font-size:14px;" align="left">45</td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>-->
+                                                </div>
+
+                                                <!--<div id="divvalidation" style="display:none;">
+                                                    <table id="" style="width:100%;table-layout:fixed;word-break:break-word;border-color: white;margin-top: 2%;">
+
+                                                        <tbody>
+                                                            <tr>
+                                                                <span style="color:red;">Pending shipment not found.</span>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>-->
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" onclick="clearModalTbl();" class="form-control ButtonColor"
+                                                        data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- <div id="divShippingBillInfo" style="display:none">
+                <div id="divAddLocation">
+
+                </div>
+                <div class="row" style="margin-top: 5px;">
+                    <div class="form-group col-xs-4 col-sm-4 col-md-4">
+                    </div>
+                    <div class="form-group col-xs-4 col-sm-4 col-md-4">
+                    </div>
+                    <div class="form-group col-xs-4 col-sm-4 col-md-4">
+                    </div>
+                    <div class="form-group col-xs-5 col-sm-4 col-md-4">
+                        <input type="button" id="btnBack" class="form-control ButtonColor" value="Back" onclick="BackFromSbill()">
+                    </div>
+                </div>
+            </div> -->
+
+            <div id="temp">
+                <br />
+            </div>
+        </div>
+    </div>
+    <div>
+        <footer class="footer" style="color: white; font-size :12px; background-color:#0967b0;">
+            <div class="container">
+                <center>
+                    <p class="text-muted" id="RightsReserved"></p>
+                </center>
+            </div>
+        </footer>
+    </div>
+</body>
+<script language="javascript" type="text/javascript">
+    $('#RightsReserved').text(' \xA9 Kale Logistics Solutions Private Limited. ' + (new Date).getFullYear().toString());
+</script>
+
+</html>
+
+<!-- GetShipmentDetailsForTDG -- tdg acceptance -->
+<!-- GetEWRnumberForAWB_PDA -- Binning -->
+<!-- GetEWRnumberForAWB_PDA -- Internal/exam movement -->
+<!-- GetAWBHistory_PDA -- Export Query -->

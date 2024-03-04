@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">http://113.193.225.59:8080/CELEBIBUD/Services/HHTImpServices.asmx</domain>
+    </domain-config>
+</network-security-config>

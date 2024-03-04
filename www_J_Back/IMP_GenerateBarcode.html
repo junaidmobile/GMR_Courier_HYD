@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/jquery-1.12.0.min.js"></script>
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/sticky-footer.css" rel="stylesheet" />
+    <script src="scripts/LoadingModel.js"></script>
+    <script src="scripts/LoaderShow-Hide.js"></script>
+    <script src="scripts/Login.js"></script>
+    <script src="scripts/dialog.js"></script>
+    <script src="js/General.js"></script>
+    <link href="css/General.css" rel="stylesheet" />
+    <script src="scripts/alert.mob.js"></script>
+    <link href="css/Loader.css" rel="stylesheet" />
+    <link href="css/dialog.css" rel="stylesheet" />
+    <link href="css/alert.mob.css" rel="stylesheet" />
+    <!--<script src="js/JsBarcode.all.js"></script>-->
+    <script src="js/Import/IMP_GenerateBarcode.js"></script>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header" style="background-color:#065da1;">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" id="btnnavbar"
+                        data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" id="navhdrName" style="text-align:right;"></a>
+                <img class="navbarImage" src="images/Logo.png" onclick="ShowHomePage();">
+                <a href="#" id="navhdr" class="loggedinUser"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid" style="margin-top:63px;">
+        <div class="panel-body">
+            <div class="panel panel-widget forms-panel form-grids widget-shadow">
+                <div class="forms">
+                    <div class="form-body">
+
+                        <div class="row" style="box-shadow: 0 -1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);padding:5px;margin-bottom:5px;background-color: lightgoldenrodyellow;">
+
+                            <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                <div class="col-xs-6 col-form-label">
+                                    <label id="lblULDNo" for="txtAcceptance" class="control-label labelFont">
+                                        Shipment Type
+                                    </label>
+                                </div>
+
+                                <div class="col-xs-6 col-form-label NoPadding">
+                                    <label style="line-height: 1.7;" class="checkbox-inline">
+                                        <input type="checkbox" id="chkMPSNo" onclick="EnableMPSNo()">MPS No.
+                                    </label>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                        <div class="row">
+
+                            <!--<div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding" id="divMAWB" style="margin-top:15px;">
+                                <div class="col-xs-6 col-form-label">
+                                    <label id="lblHAWBNO" for="txtHAWBNO">Scan</label>
+                                    <font color="red">*</font>
+                                </div>
+                                <div class="col-xs-6 NoPadding">
+                                    <input id="txtHAWBNo" class="form-control" type="text"
+                                           autofocus onkeyup="ChkMaxLength(this, '35');" onblur="searchMPSHAWBNumbers();">
+
+                                </div>
+
+                            </div>-->
+
+
+                            <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding" id="divMAWB" style="margin-top:15px;">
+                                <div class="col-xs-6 col-form-label">
+                                    <label id="lblHAWBNO" for="txtHAWBNO">HAWB No.</label>
+                                    <label id="lblIMPSNo" for="txtmpsno" style="display:none;">MPS No./Pkg. ID</label>
+                                    <font color="red">*</font>
+                                </div>
+                                <div class="col-xs-6 NoPadding">
+                                    <input id="txtHAWBNo" class="form-control" type="text"
+                                           autofocus onkeyup="ChkMaxLength(this, '35');" onblur="GetReGenerationPackageV4();">
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                <div class="col-xs-6 col-form-label">
+                                    <label id="lblAWBNo" for="">MAWB No.</label>
+                                    <font color="red">*</font>
+                                </div>
+                                <div class="col-xs-6 NoPadding">
+                                    <select class="form-control" id="ddlMAWBNo"
+                                            onchange="GetPackageIdBarcodeLabelList_HHTOnChangeHAWBNo($('#ddlMAWBNo').val())">
+                                        <option value="0">Select</option>
+                                    </select>
+                                    <!--onchange="GetPackageIdBarcodeLabelList_HHTOnChangeHAWBNo($('#ddlMAWBNo').val())"-->
+                                </div>
+                            </div>
+
+                            <div class="form-group col-xs-6 col-sm-6 col-md-6 col-xs-offset-6 col-sm-offset-6  col-md-offset-6 NoPadding">
+                                <input type="button" id="btnGoodsDelever" class="form-control ButtonColor" value="Get Details" onclick="GetPackageIdBarcodeLabelList_HHTOnGetButtonDetails();">
+                            </div>
+                            <!--<div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                <span id="spnMsg"></span>
+                            </div>-->
+
+                            <div class="col-xs-12 NoPadding">
+                                <label id="spnValMsg"></label>
+                            </div>
+
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="divVCTDetail">
+            <!--<table id="tblPAckageIDs" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th height="30" style="background-color:rgb(208, 225, 244);">Package ID</th>
+                        <th height="30" style="background-color:rgb(208, 225, 244);">Package Count</th>
+                        <th height="30" style="background-color:rgb(208, 225, 244);">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="background: rgb(224, 243, 215);text-align: center;">08022022114601183</td>
+                        <td style="background: rgb(224, 243, 215);text-align: center;">1/1</td>
+                        <td style="background: rgb(224, 243, 215);">  <a style="text-align: center;argin-left: 5px;background-color: #065da1;color: #fff;" type="button" class=" form-control glyphicon glyphicon-print"></a></td>
+                    </tr>
+                </tbody>
+            </table>-->
+        </div>
+
+
+    </div>
+
+    <div class="footer" style="margin-bottom:25px;">
+        <div class="form-group col-xs-6 col-sm-6 col-md-6" style="margin-top:15px">
+            <input type="button" id="btnExcLanded" class="form-control ButtonColor" value="Exit" onclick="window.location.href = 'IMP_Dashboard.html'">
+        </div>
+        <div class="form-group col-xs-6 col-sm-6 col-md-6" style="margin-top:15px">
+            <input type="button" id="btnClear" class="form-control ButtonColor" value="Clear" onclick="clearBeforePopulate()">
+        </div>
+    </div>
+
+    <div>
+
+        <footer class="footer" style="color: white; font-size :12px; background-color:#0967b0;">
+
+            <div class="container">
+                <center><p class="text-muted" id="RightsReserved"></p></center>
+            </div>
+        </footer>
+    </div>
+</body>
+<script language="javascript" type="text/javascript">
+    $('#RightsReserved').text(' \xA9 Kale Logistics Solutions Private Limited. ' + (new Date).getFullYear().toString());
+</script>
+
+</html>

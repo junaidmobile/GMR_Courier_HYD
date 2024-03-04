@@ -1,0 +1,581 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/jquery-1.12.0.min.js"></script>
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/moment.js"></script>
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/sticky-footer.css" rel="stylesheet" />
+    <script src="scripts/LoadingModel.js"></script>
+    <script src="scripts/LoaderShow-Hide.js"></script>
+    <script src="scripts/dialog.js"></script>
+    <script src="js/General.js"></script>
+    <link href="css/General.css" rel="stylesheet" />
+    <script src="scripts/alert.mob.js"></script>
+    <link href="css/Loader.css" rel="stylesheet" />
+    <link href="css/dialog.css" rel="stylesheet" />
+    <link href="css/alert.mob.css" rel="stylesheet" />
+    <script src="js/Export/EXP_documentacceptance.js"></script>
+    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/wow/0.1.12/wow.min.js"></script>-->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+    <!--<script>new WOW().init();</script>-->
+
+
+    <style type="text/css">
+        input.larger {
+            width: 20px;
+            height: 20px;
+            vertical-align: bottom;
+        }
+
+        input[type="checkbox"][readonly] {
+            pointer-events: none;
+        }
+
+        /* .col-lg-1,
+        .col-lg-10,
+        .col-lg-11,
+        .col-lg-12,
+        .col-lg-2,
+        .col-lg-3,
+        .col-lg-4,
+        .col-lg-5,
+        .col-lg-6,
+        .col-lg-7,
+        .col-lg-8,
+        .col-lg-9,
+        .col-md-1,
+        .col-md-10,
+        .col-md-11,
+        .col-md-12,
+        .col-md-2,
+        .col-md-3,
+        .col-md-4,
+        .col-md-5,
+        .col-md-6,
+        .col-md-7,
+        .col-md-8,
+        .col-md-9,
+        .col-sm-1,
+        .col-sm-10,
+        .col-sm-11,
+        .col-sm-12,
+        .col-sm-2,
+        .col-sm-3,
+        .col-sm-4,
+        .col-sm-5,
+        .col-sm-6,
+        .col-sm-7,
+        .col-sm-8,
+        .col-sm-9,
+        .col-xs-1,
+        .col-xs-10,
+        .col-xs-11,
+        .col-xs-12,
+        .col-xs-2,
+        .col-xs-3,
+        .col-xs-4,
+        .col-xs-5,
+        .col-xs-6,
+        .col-xs-7,
+        .col-xs-8,
+        .col-xs-9 {
+            position: relative;
+            min-height: 1px;
+            padding-right: 5px !important;
+            padding-left: 5px !important;
+        } */
+
+
+        #TextBoxDiv td.foo:nth-child(7n+1) {
+            background-color: rgb(177, 112, 136);
+            color: white;
+            padding: 3px;
+            text-align: center;
+        }
+
+        #TextBoxDiv td.foo:nth-child(7n+2) {
+            background-color: rgb(27, 81, 141);
+            color: white;
+            padding: 3px;
+            text-align: center;
+        }
+
+        #TextBoxDiv td.foo:nth-child(7n+3) {
+            background-color: rgb(13, 150, 68);
+            color: white;
+            padding: 3px;
+            text-align: center;
+        }
+
+        #TextBoxDiv td.foo:nth-child(7n+4) {
+            background-color: rgb(35, 29, 31);
+            color: white;
+            padding: 3px;
+            text-align: center;
+        }
+
+        #TextBoxDiv td.foo:nth-child(7n+5) {
+            background-color: rgb(157, 124, 43);
+            color: white;
+            padding: 3px;
+            text-align: center;
+        }
+
+        #TextBoxDiv td.foo:nth-child(7n+6) {
+            background-color: rgb(14, 76, 166);
+            color: white;
+            padding: 3px;
+            text-align: center;
+        }
+
+        #TextBoxDiv td.foo:nth-child(7n+7) {
+            background-color: rgb(206, 84, 209);
+            color: white;
+            padding: 3px;
+            text-align: center;
+        }
+
+        #TextBoxDiv td.foo:nth-child(7n+8) {
+            background-color: rgb(143, 74, 219);
+            color: white;
+            padding: 3px;
+            text-align: center;
+        }
+
+        #TextBoxDiv td.foo:nth-child(7n+9) {
+            background-color: rgb(198, 139, 74);
+            color: white;
+            padding: 3px;
+            text-align: center;
+        }
+
+        #TextBoxDiv > tbody > tr > td,
+        .table > tbody > tr > th,
+        .table > tfoot > tr > td,
+        .table > tfoot > tr > th,
+        .table > thead > tr > td,
+        .table > thead > tr > th {
+            font-size: 12px;
+        }
+
+        #TextBoxDiv {
+            margin-bottom: 0px !important;
+            margin-top: 5px;
+        }
+
+        .blink_me {
+            animation: blinker 1s linear infinite;
+            background-color: yellow;
+            padding: 15px;
+            text-align: center;
+            line-height: 50px;
+            font-weight: bolder;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .table > tbody > tr > td,
+        .table > tbody > tr > th,
+        .table > tfoot > tr > td,
+        .table > tfoot > tr > th,
+        .table > thead > tr > td,
+        .table > thead > tr > th {
+            vertical-align: inherit;
+        }
+
+        table,
+        td,
+        th {
+            /* border: 1px solid black;*/
+            background: rgb(224, 243, 215);
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        table,
+        tbody,
+        tr,
+        th {
+            background-color: rgb(208, 225, 244);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-color: white;
+        }
+
+        .textpackges {
+            width: 100% !important;
+        }
+
+        .txtDimRow {
+            width: 10% !important;
+        }
+
+        .table {
+            margin-bottom: 0px !important;
+        }
+
+
+        /* input {
+            width: 100%;
+        } */
+    </style>
+
+    <!-- <script type="text/javascript">
+        function hideDiv(elem) {
+            console.log('elem.value = ' + elem.value);
+            if (elem.value == "True")
+                document.getElementById('documentLabel').style.display = "none";
+            else
+                document.getElementById('documentLabel').style.display = 'block';
+        }
+    </script> -->
+
+
+</head>
+
+
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header" style="background-color:#065da1;">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" id="btnnavbar"
+                        data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" id="navhdrName" style="text-align:right;">
+                    Document
+                    Acceptance
+                </a>
+                <img class="navbarImage" src="images/Logo.png" onclick="ShowHomePage();">
+                <a href="#" id="navhdr" class="loggedinUser"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container-fluid" style="margin-top:63px;">
+        <div class="panel-body">
+            <div class="panel panel-widget forms-panel form-grids widget-shadow">
+                <div class="forms">
+                    <div class="form-body">
+                        <form>
+                            <div class="row">
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6">
+                                    <div class="col-xs-6 col-form-label NoPadding">
+                                        <label id="lblAwbNo" for="txtAwbNo" class="control-label">AWB No.</label>
+                                        <font color="red">*</font>
+                                    </div>
+                                    <div class="col-xs-6 NoPadding">
+
+                                        <input id="txtAwbNo" class="form-control" type="number" style="text-align:right;"
+                                               onkeyup="ChkMaxLength(this, '15');"
+                                               onblur="GetVCTDetailsForTDGAcceptance();">
+                                        <!-- onblur="hideDiv('True');"> -->
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6">
+                                    <div class="col-xs-6 col-form-label NoPadding">
+                                        <label id="lblFlightNoDt" for="txtFlightNoDt"
+                                               class="control-label labelFont">Flight No./Date</label>
+                                    </div>
+                                    <div class="col-xs-6 NoPadding">
+
+                                        <input type="text" style="text-align:right;" id="txtFlightNoDt"
+                                               class="form-control" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="row">
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6">
+                                    <div class="col-xs-6 col-form-label NoPadding">
+                                        <label id="lblCommodity" for="txtCommodity"
+                                               class="control-label labelFont">Commodity</label>
+                                    </div>
+                                    <div class="col-xs-6 NoPadding">
+                                    </div>
+                                </div>
+                            </div>-->
+                            <div class="row">
+                                <div class="form-group col-xs-12 col-sm-12 col-md-12">
+                                    <table class="table" id="TextBoxDiv">
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 10px;">
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6">
+                                    <div class="col-xs-6 col-form-label NoPadding">
+                                        <label id="lblAcceptedPieces" for="txtAcceptedPieces"
+                                               class="control-label labelFont">Accepted Pieces</label>
+                                    </div>
+                                    <div class="col-xs-6 NoPadding">
+
+                                        <input type="number" style="text-align:right;" id="txtAcceptedPieces"
+                                               class="form-control" onkeyup="ChkMaxLength(this, '7');" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6">
+                                    <div class="col-xs-6 col-form-label NoPadding">
+                                        <label id="lblAcceptedGrWt" for="txtAcceptedGrWt"
+                                               class="control-label labelFont">Accepted Gross Wt.</label>
+                                    </div>
+                                    <div class="col-xs-6 NoPadding">
+
+                                        <input type="number" id="txtAcceptedGrWt" style="text-align:right;"
+                                               class="form-control" maxlength="15" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6">
+                                    <div class="col-xs-6 col-form-label NoPadding">
+                                        <label id="lblAcceptedChwt" for="txtAcceptedChwt"
+                                               class="control-label labelFont">Accepted Ch.Wt.</label>
+                                    </div>
+                                    <div class="col-xs-6 NoPadding">
+
+                                        <input type="number" id="txtAcceptedChwt" style="text-align:right;"
+                                               class="form-control" maxlength="15" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6">
+                                    <div class="col-xs-6 col-form-label NoPadding">
+                                        <label id="lblHandoverDt" for="txtHandoverDt" class="control-label">
+                                            Handover
+                                            Date
+                                        </label>
+                                        <font color="red">*</font>
+                                    </div>
+                                    <div class="col-xs-6 NoPadding">
+
+                                        <input type="datetime-local" id="txtHandoverDt" style="text-transform: none;"
+                                               class="form-control" title="Date" value="dtHandoverDate">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6">
+                                    <div class="col-xs-6 col-form-label NoPadding">
+                                        <label for="txtRemarks">Remarks</label>
+                                    </div>
+                                    <div class="col-xs-6 NoPadding">
+
+                                        <input id="txtRemarks" class="form-control" type="text">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            <!--<div style="text-align: center;" id="documentLabel">
+                <label id="lblDocuments" class="control-label labelFont">Documents</label>
+            </div>-->
+
+
+            <div class="panel panel-widget forms-panel form-grids widget-shadow" style="margin-top:5%;" id="documentList">
+
+                <!-- display: none;<div class="forms">
+            <div class="form-body" id="divMain">
+                <form>
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-sm-6 col-md-6">
+                            <div class="col-xs-6 col-form-label NoPadding">
+                                <label id="lblPieces" for="txtPieces" class="control-label">Air Waybill
+                                    Copy</label>
+                            </div>
+                            <div class="col-xs-6 NoPadding" style="text-align: center;">
+                                <input type="checkbox" id="chkcompleted" class="larger" name="completed"
+                                    value="Completed">
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-sm-6 col-md-6">
+                            <div class="col-xs-6 col-form-label NoPadding">
+                                <label id="lblPieces" for="txtPieces" class="control-label">Shipping
+                                    Bill</label>
+                            </div>
+                            <div class="col-xs-6 NoPadding" style="text-align: center;">
+                                <input type="checkbox" id="chkcompleted" class="larger" name="completed"
+                                    value="Completed">
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-sm-6 col-md-6">
+                            <div class="col-xs-6 col-form-label NoPadding">
+                                <label id="lblPieces" for="txtPieces" class="control-label">Security
+                                    Declaration</label>
+                            </div>
+                            <div class="col-xs-6 NoPadding" style="text-align: center;">
+                                <input type="checkbox" id="chkcompleted" class="larger" name="completed"
+                                    value="Completed">
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-sm-6 col-md-6">
+                            <div class="col-xs-6 col-form-label NoPadding">
+                                <label id="lblPieces" for="txtPieces" class="control-label">Annexure -I</label>
+                            </div>
+                            <div class="col-xs-6 NoPadding" style="text-align: center;">
+                                <input type="checkbox" id="chkcompleted" class="larger" name="completed"
+                                    value="Completed">
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-sm-6 col-md-6">
+                            <div class="col-xs-6 col-form-label NoPadding">
+                                <label id="lblPieces" for="txtPieces" class="control-label">Annexure -II</label>
+                            </div>
+                            <div class="col-xs-6 NoPadding" style="text-align: center;">
+                                <input type="checkbox" id="chkcompleted" class="larger" name="completed"
+                                    value="Completed">
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-sm-6 col-md-6">
+                            <div class="col-xs-6 col-form-label NoPadding">
+                                <label id="lblPieces" for="txtPieces" class="control-label">CHA Photo
+                                    Copy</label>
+                            </div>
+                            <div class="col-xs-6 NoPadding" style="text-align: center;">
+                                <input type="checkbox" id="chkcompleted" class="larger" name="completed"
+                                    value="Completed">
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </form>
+            </div>
+
+
+
+
+
+        </div> -->
+            </div>
+        </div>
+
+        <div class="form-body" id="divTable" style="display:none">
+            <form>
+                <!-- <div id="divAddTestLocation">
+
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group col-xs-4 col-sm-4 col-md-4">
+                    </div>
+                    <div class="form-group col-xs-4 col-sm-4 col-md-4">
+                    </div>
+                    <div class="form-group col-xs-4 col-sm-4 col-md-4">
+                        <input type="button" id="btnExit" class="form-control ButtonColor" value="Close"
+                            onclick="DisplayMainDetails()">
+                    </div>
+                </div> -->
+
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <div class="row" style="margin: 10px;">
+
+
+            <div class="form-group col-xs-4 col-sm-4 col-md-4">
+                <input type="button" id="btnExit" class="form-control ButtonColor" value="Exit"
+                       onclick="window.location.href = 'EXP_Dashboard.html'">
+            </div>
+            <div class="form-group col-xs-4 col-sm-4 col-md-4">
+                <input type="button" id="btnClear" class="form-control ButtonColor" value="Cancel"
+                       onclick="saveDocumentAcceptance(true)">
+            </div>
+            <div class="form-group col-xs-4 col-sm-4 col-md-4">
+                <input type="submit" id="btnSave" class="form-control ButtonColor" value="Submit"
+                       onclick="saveDocumentAcceptance(false)">
+            </div>
+        </div>
+        <footer class="footer" style="color: white; font-size :12px; background-color:#0967b0;">
+
+            <div class="container">
+                <center>
+                    <p class="text-muted" id="RightsReserved"></p>
+                </center>
+            </div>
+        </footer>
+    </div>
+</body>
+
+
+
+
+<script language="javascript" type="text/javascript">
+    $('#RightsReserved').text(' \xA9 Kale Logistics Solutions Private Limited. ' + (new Date).getFullYear().toString());
+</script>
+
+</html>
+
+<!-- GetShipmentDetailsForTDG -- tdg acceptance -->
+<!-- GetEWRnumberForAWB_PDA -- Binning -->
+<!-- GetEWRnumberForAWB_PDA -- Internal/exam movement -->
+<!-- GetAWBHistory_PDA -- Export Query -->
