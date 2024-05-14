@@ -1200,10 +1200,11 @@ function GetShipmentInfoForAWB() {
                     if ($(this).find('Status').text() != 'S') {
                         //$.alert($(this).find('StrMessage').text());
                         $('#spnValMsg').text($(this).find('StrMessage').text()).css('color', 'red');
+                        $('#btnSave').attr('disabled', 'disabled');
                         return;
                     } else {
                         $('#spnValMsg').text('');
-                        // $('#btnSave').removeAttr('disabled');
+                        $('#btnSave').removeAttr('disabled');
                     }
                 });
 
@@ -1216,10 +1217,11 @@ function GetShipmentInfoForAWB() {
                     var nog = $(this).find('Nog').text();
                     var unitized = $(this).find('RemNOP').text();
                     var ttlPkg = $(this).find('NOP').text();
+                    var ManNOP = $(this).find('ManNOP').text();
 
                     $('#txtAWBNo').val(awbNo);
                     $('#txtNOG').val(nog);
-                    $('#txtUnitizedPkgs').val(unitized);
+                    $('#txtUnitizedPkgs').val(ManNOP);
                     $('#txtTotalPkgs').val(ttlPkg);
                 });
 
@@ -1449,7 +1451,11 @@ function SaveAWBforULDDetails() {
                         // $('#txtTotalPkgs').val('');
                         // $('#txtPackages').val('');
                         // $('#ddlShipmentNo').empty();
+
+
                         $('#spnValMsg').text($(this).find('StrMessage').text()).css('color', 'green');
+                        clearAWBDetails();
+                        $("#txtScannedID").focus();
                         return;
                     }
                     else {
@@ -1683,7 +1689,8 @@ function clearAWBDetails() {
     $('txtScannedID').val('');
     //$('#txtTotalPkgs').val('');
     $("#TextBoxDiv").empty();
-
+    //  $("#divAddTestLocation").empty();
+    $('spnValMsg').text('');
 }
 
 function ClearError(ID) {

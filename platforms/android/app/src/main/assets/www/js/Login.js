@@ -23,6 +23,12 @@ var CMSserviceURL = 'https://gmrcourieruat.kalelogistics.com:7081//GalaxyINTMABB
 //var GHAExportFlightserviceURL = 'https://galaxyqa.kalelogistics.com/NASEBB/Services/HHTExpServices.asmx/';
 //var CMSserviceURL = 'https://gmrintluat.kalelogistics.com:7081/HHTWS/CMS_WS_PDA_NON_VAPT.asmx/';
 
+//GMR HYD Live
+
+//var GHAserviceURL = 'https://courier.gmrcargo.com:7081/Galaxy/Services/HHTImpServices.asmx/';
+//var GHAImportFlightserviceURL = 'https://courier.gmrcargo.com:7081/Galaxy/Services/HHTImpServices.asmx/';
+//var GHAExportFlightserviceURL = 'https://courier.gmrcargo.com:7081/Galaxy/Services/HHTExpServices.asmx/';
+//var CMSserviceURL = 'https://gmrintluat.kalelogistics.com/HHTWS/cms_ws_pda.asmx/';
 
 
 var deviceUUID;
